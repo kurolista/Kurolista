@@ -1,0 +1,7 @@
+{
+    "id": 1,
+    "position": 1,
+    "name": "TrusTa",
+    "points": 500,
+    "description": "Legendary player known for incredible skill and precision in extreme demons."
+}

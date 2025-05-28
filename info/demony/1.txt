@@ -1,8 +1,0 @@
-{
-    "id": 1,
-    "position": 1,
-    "name": "Bloodbath",
-    "description": "Extremely difficult and famous demon created by Riot. Features intense gameplay with multiple difficult timings and intricate designs.",
-    "thumbnail": "https://img.youtube.com/vi/7WH1h1WFk_4/maxresdefault.jpg",
-    "videoUrl": "https://www.youtube.com/watch?v=7WH1h1WFk_4"
-}

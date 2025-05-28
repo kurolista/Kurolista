@@ -1,1 +1,0 @@
-{"id": 2, "position": 2, "name": "Technical", "points": 450, "description": "Amazing player with incredible consistency and determination."}

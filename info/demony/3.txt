@@ -1,6 +1,0 @@
-id: 3,
-position: 3,
-name: "Tartarus",
-description: "One of the hardest demons ever created with extremely precise timings and intricate gameplay mechanics.",
-thumbnail: "https://img.youtube.com/vi/GRxHCKnS5jQ/maxresdefault.jpg",
-videoUrl: "https://www.youtube.com/watch?v=GRxHCKnS5jQ"

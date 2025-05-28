@@ -1,0 +1,5 @@
+id: 3,
+position: 3,
+name: "Riot",
+points: 400,
+description: "Creator of Bloodbath and many other famous levels."

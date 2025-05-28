@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuropatwa GDPS - Lista Demonów</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body>
+    <!-- Decorative elements removed -->
+
+    <div class="container">
+        <header>
+            <h1>Kuropatwa GDPS - Lista Demonów</h1>
+            <p>Oficjalna lista najtrudniejszych demonów na serwerze Kuropatwa GDPS w Geometry Dash</p>
+        </header>
+
+        <div class="tab-navigation-container">
+            <a href="https://discord.gg/aHUN4uW9q7" target="_blank" class="nav-discord-button">
+                <i class="fab fa-discord"></i>
+                Discord
+            </a>
+            
+            <div class="tab-navigation">
+                <button id="tab-top10" class="tab-button active">Top 10</button>
+                <button id="tab-extended" class="tab-button">Wydłużona Lista</button>
+                <button id="tab-players" class="tab-button">Topka Graczy</button>
+            </div>
+
+            <!-- Admin button removed -->
+        </div>
+
+        <div id="tab-content-top10" class="tab-content active">
+            <div id="demons-container-top10" class="demons-container">
+                <!-- Top 10 Demons will be loaded dynamically by JavaScript -->
+                <div class="loading-indicator">Ładowanie demonów...</div>
+            </div>
+        </div>
+
+        <div id="tab-content-extended" class="tab-content">
+            <div id="demons-container-extended" class="demons-container">
+                <!-- Extended list of demons will be loaded dynamically by JavaScript -->
+                <div class="loading-indicator">Ładowanie demonów...</div>
+            </div>
+        </div>
+
+        <div id="tab-content-players" class="tab-content">
+            <div id="players-container" class="players-container">
+                <!-- Players will be loaded dynamically by JavaScript -->
+                <div class="loading-indicator">Ładowanie graczy...</div>
+            </div>
+        </div>
+
+        <!-- Footer removed as buttons moved to tab navigation -->
+    </div>
+
+    <!-- Admin Panel Modal removed (duplicate) -->
+    
+    <!-- Admin panel removed -->
+
+    <!-- Edit modals removed, functionality moved to the sidebar form -->
+
+    <script src="js/script.js"></script>
+</body>
+</html>

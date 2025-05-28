@@ -2,6 +2,6 @@
     "id": 3,
     "position": 3,
     "name": "BartoszGD",
-    "points": 55pt,
+    "points": 55,
     "description": "KFL"
 }

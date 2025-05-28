@@ -2,6 +2,6 @@
     "id": 1,
     "position": 1,
     "name": "PigeonEnjoyer",
-    "points": 112pt,
+    "points": 112,
     "description": "Gołębie..."
 }

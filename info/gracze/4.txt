@@ -1,0 +1,7 @@
+{
+    "id": 4,
+    "position": 4,
+    "name": "Kolib",
+    "points": 54pt,
+    "description": "Kolibełek"
+}

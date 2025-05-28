@@ -1,0 +1,7 @@
+{
+    "id": 3,
+    "position": 3,
+    "name": "BartoszGD",
+    "points": 55pt,
+    "description": "KFL"
+}

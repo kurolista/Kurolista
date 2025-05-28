@@ -2,7 +2,7 @@
     "id": 1,
     "position": 1,
     "name": "The Holokaust",
-    "description": "Autor: Witr0 Weryfikator: PigonSigma/PigeonEnjoyer",
+    "description": "Autor: Witr0 Weryfikator: PigonSigma",
     "thumbnail": "",
-    "videoUrl": ""
+    "videoUrl": "https://youtu.be/TyBi29hfS6g?si=KA2FYlb-qPPGG2X9"
 }

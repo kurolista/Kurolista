@@ -1,0 +1,8 @@
+{
+    "id": 5,
+    "position": 5,
+    "name": "KFC Madnes",
+    "description": "Autor: FenoDash Weryfikator: FenoDash",
+    "thumbnail": "",
+    "videoUrl": "https://youtu.be/8ZdN3dBRKJY?si=mc4c6y0jx6t90BN9"
+}

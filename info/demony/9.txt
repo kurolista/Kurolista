@@ -1,0 +1,8 @@
+{
+    "id": 9,
+    "position": 9,
+    "name": "Wave Challange",
+    "description": "Autor: Przecinek Weryfikator: Przecinek",
+    "thumbnail": "",
+    "videoUrl": ""
+}

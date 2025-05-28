@@ -4,5 +4,5 @@
     "name": "Chuj Kurwa",
     "description": "Autor: Realkolib2137 Weryfikator: PigeonSigma",
     "thumbnail": "",
-    "videoUrl": "https://youtu.be/nPIlBp5jSJk"
+    "videoUrl": "www.youtube.com/watch?v=nPIlBp5jSJk&feature=youtu.be"
 }

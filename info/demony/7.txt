@@ -4,5 +4,5 @@
     "name": "Clicks of hell",
     "description": "Autor: Ziven Weryfikator: PigeonSigma",
     "thumbnail": "",
-    "videoUrl": "https://youtu.be/WdbdQAAvymA?si=B9-2vR5XqXI-l43V"
+    "videoUrl": "https://www.youtube.com/watch?v=WdbdQAAvymA&ab_channel=Awuzi"
 }

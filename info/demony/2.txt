@@ -4,5 +4,5 @@
     "name": "Żylaki na dupie",
     "description": "Autor: BartoszGD Weryfikator: BatroszGD",
     "thumbnail": "",
-    "videoUrl": "https://youtu.be/Bz7FkKl2Ei8"
+    "videoUrl": "www.youtube.com/watch?v=Bz7FkKl2Ei8&feature=youtu.be"
 }

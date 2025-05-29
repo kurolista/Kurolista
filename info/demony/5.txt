@@ -1,7 +1,7 @@
 {
     "id": 5,
     "position": 5,
-    "name": "KFC Madnes",
+    "name": "KFC Madness",
     "description": "Autor: FenoDash Weryfikator: FenoDash",
     "thumbnail": "",
     "videoUrl": "https://www.youtube.com/watch?v=8ZdN3dBRKJY&ab_channel=Awuzi"

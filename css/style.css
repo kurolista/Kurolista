@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: radial-gradient(ellipse at center, #3a3530 0%, #1a1a1a 100%);
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.m-symbol {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    transform: perspective(200px) rotateY(-15deg);
+}
+
+/* Main M shape - left part */
+.m-symbol::before {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 80px;
+    background: linear-gradient(135deg, #FFA726 0%, #FF9D00 50%, #F57C00 100%);
+    clip-path: polygon(0% 0%, 100% 0%, 70% 40%, 100% 100%, 60% 100%, 30% 60%, 0% 100%);
+    left: 0;
+    top: 20px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+}
+
+/* Main M shape - right part */
+.m-symbol::after {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 80px;
+    background: linear-gradient(225deg, #FFA726 0%, #FF9D00 50%, #F57C00 100%);
+    clip-path: polygon(30% 0%, 100% 0%, 100% 100%, 70% 60%, 40% 100%, 0% 100%);
+    right: 0;
+    top: 20px;
+    box-shadow: -2px 2px 10px rgba(0,0,0,0.3);
+}
+
+/* Left triangle inside */
+.m-left {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid #FFA726;
+    border-bottom: 20px solid transparent;
+    border-top: 20px solid transparent;
+    left: 22px;
+    top: 50px;
+    z-index: 10;
+}
+
+/* Right triangle inside */
+.m-right {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 15px solid #FFA726;
+    border-right: 15px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-top: 20px solid transparent;
+    right: 22px;
+    top: 50px;
+    z-index: 10;
+}
+
+.medal-text {
+    font-size: 90px;
+    font-weight: 300;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    letter-spacing: -2px;
+}

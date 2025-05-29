@@ -3,65 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kuropatwa GDPS - Lista Demonów</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>Kurolista - KuropatwaGDPS Demon List</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 </head>
 <body>
-    <!-- Decorative elements removed -->
-
+    <!-- Background elements -->
+    <div class="bg-container"></div>
+    <div class="bg-overlay"></div>
+    
     <div class="container">
         <header>
-            <h1>Kuropatwa GDPS - Lista Demonów</h1>
-            <p>Oficjalna lista najtrudniejszych demonów na serwerze Kuropatwa GDPS w Geometry Dash</p>
+            <div class="logo">
+                <i class="fas fa-cubes logo-icon"></i>
+            </div>
+            <div class="header-content">
+                <h1>Kurolista</h1>
+                <p>Lista najtrudniejszych demonów i najlepszych graczy KuropatwaGDPS</p>
+            </div>
         </header>
-
-        <div class="tab-navigation-container">
-            <a href="https://discord.gg/aHUN4uW9q7" target="_blank" class="nav-discord-button">
+        
+        <!-- Mobile header with menu toggle and Discord button -->
+        <div class="mobile-header">
+            <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </div>
+            <a href="https://discord.gg/g23DGe2VUb" target="_blank" class="nav-discord-button mobile-discord">
                 <i class="fab fa-discord"></i>
-                Discord
+                <span>Discord</span>
             </a>
+        </div>
+        
+        <div class="tab-navigation-container">
+            <div class="navigation-content">
+                <div class="tab-navigation" id="tab-navigation">
+                    <button class="tab-button active" id="tab-top10"><i class="fas fa-trophy"></i> TOP 10</button>
+                    <button class="tab-button" id="tab-extended"><i class="fas fa-list-ol"></i> Lista Rozszerzona</button>
+                    <button class="tab-button" id="tab-players"><i class="fas fa-users"></i> Gracze</button>
+                </div>
+                <a href="https://discord.gg/g23DGe2VUb" target="_blank" class="nav-discord-button desktop-discord">
+                    <i class="fab fa-discord"></i>
+                    <span>Discord</span>
+                </a>
+            </div>
+        </div>
+        
+        <main>
+            <!-- TOP 10 TAB -->
+            <div id="tab-content-top10" class="tab-content active">
+                <div class="content-header">
+                    <h2><i class="fas fa-trophy"></i> Najtrudniejsze demony</h2>
+                    <p>TOP 10 najtrudniejszych demonów w KuropatwaGDPS</p>
+                </div>
+                <div id="demons-container-top10" class="demons-container">
+                    <div class="loading-indicator">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <span>Ładowanie demonów...</span>
+                    </div>
+                </div>
+            </div>
             
-            <div class="tab-navigation">
-                <button id="tab-top10" class="tab-button active">Top 10</button>
-                <button id="tab-extended" class="tab-button">Wydłużona Lista</button>
-                <button id="tab-players" class="tab-button">Topka Graczy</button>
+            <!-- Extended List Tab -->
+            <div id="tab-content-extended" class="tab-content">
+                <div class="content-header">
+                    <h2><i class="fas fa-list-ol"></i> Lista rozszerzona</h2>
+                    <p>Wszystkie najtrudniejsze demony według trudności</p>
+                </div>
+                <div id="demons-container-extended" class="demons-container">
+                    <div class="loading-indicator">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <span>Ładowanie demonów...</span>
+                    </div>
+                </div>
             </div>
-
-            <!-- Admin button removed -->
-        </div>
-
-        <div id="tab-content-top10" class="tab-content active">
-            <div id="demons-container-top10" class="demons-container">
-                <!-- Top 10 Demons will be loaded dynamically by JavaScript -->
-                <div class="loading-indicator">Ładowanie demonów...</div>
+            
+            <!-- Players Tab -->
+            <div id="tab-content-players" class="tab-content">
+                <div class="content-header">
+                    <h2><i class="fas fa-users"></i> Ranking graczy</h2>
+                    <p>Najlepsi gracze serwera KuropatwaGDPS</p>
+                </div>
+                <div id="players-container" class="players-container">
+                    <div class="loading-indicator">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <span>Ładowanie graczy...</span>
+                    </div>
+                </div>
             </div>
-        </div>
-
-        <div id="tab-content-extended" class="tab-content">
-            <div id="demons-container-extended" class="demons-container">
-                <!-- Extended list of demons will be loaded dynamically by JavaScript -->
-                <div class="loading-indicator">Ładowanie demonów...</div>
-            </div>
-        </div>
-
-        <div id="tab-content-players" class="tab-content">
-            <div id="players-container" class="players-container">
-                <!-- Players will be loaded dynamically by JavaScript -->
-                <div class="loading-indicator">Ładowanie graczy...</div>
-            </div>
-        </div>
-
-        <!-- Footer removed as buttons moved to tab navigation -->
+        </main>
     </div>
-
-    <!-- Admin Panel Modal removed (duplicate) -->
     
-    <!-- Admin panel removed -->
-
-    <!-- Edit modals removed, functionality moved to the sidebar form -->
-
-    <script src="js/script.js"></script>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-info">
+                <span>KuropatwaGDPS © 2025</span>
+            </div>
+            <div class="footer-links">
+                <a href="https://discord.gg/g23DGe2VUb" target="_blank">
+                    <i class="fab fa-discord"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="tooltip-overlay" id="tooltip-overlay"></div>
+    <div class="theme-toggle" id="theme-toggle">
+        <i class="fas fa-moon"></i>
+        <div class="theme-tooltip" id="theme-tooltip">
+            <div class="tooltip-title"><i class="fas fa-magic"></i> Personalizacja</div>
+            <div class="tooltip-content">
+                <p>🌞 Kliknij mnie, aby zmienić wygląd strony!</p>
+                <div class="tooltip-hint">💡 Wskazówka: Spróbuj kliknąć szybko 10 razy!</div>
+                <div class="tooltip-modes">
+                    <span class="tooltip-mode"><i class="fas fa-sun"></i> Jasny</span>
+                    <span class="tooltip-mode"><i class="fas fa-moon"></i> Ciemny</span>
+                    <span class="tooltip-mode secret-mode"><i class="fas fa-question"></i> <span class="secret-text"><i class="fas fa-rainbow"></i> Sekret</span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <iframe id="rainbow-music" width="0" height="0" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="display: none;"></iframe>
+    
+    <script src="script.js"></script>
 </body>
 </html>

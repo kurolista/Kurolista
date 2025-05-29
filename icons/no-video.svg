@@ -1,0 +1,25 @@
+<svg width="200" height="150" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="200" height="150" fill="#2c3e50" rx="8"/>
+  
+  <!-- Camera icon -->
+  <g fill="#95a5a6">
+    <!-- Camera body -->
+    <rect x="60" y="50" width="80" height="50" rx="8"/>
+    <!-- Camera lens -->
+    <circle cx="100" cy="75" r="18" fill="#34495e"/>
+    <circle cx="100" cy="75" r="12" fill="#95a5a6"/>
+    <circle cx="100" cy="75" r="8" fill="#34495e"/>
+    <!-- Camera flash -->
+    <rect x="130" y="55" width="6" height="6" rx="1"/>
+  </g>
+  
+  <!-- Cross/slash -->
+  <g stroke="#e74c3c" stroke-width="4" stroke-linecap="round">
+    <line x1="40" y1="30" x2="160" y2="120"/>
+    <line x1="160" y1="30" x2="40" y2="120"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="100" y="125" text-anchor="middle" fill="#ecf0f1" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Wideo wkrótce</text>
+</svg>

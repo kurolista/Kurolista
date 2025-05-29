@@ -2,7 +2,7 @@
     "id": 4,
     "position": 4,
     "name": "JaJoGniot",
-    "description": "Autor: BartoszGD Weryfikator: ???",
+    "description": "Autor: BartoszGD Weryfikator: BartoszGD",
     "thumbnail": "",
     "videoUrl": "https://youtu.be/vxCtUCiXwdY"
 }

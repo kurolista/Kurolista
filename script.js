@@ -6,35 +6,45 @@ let demons = [];
 // Initial players data (loaded from files)
 let players = [];
 
-// Function to generate thumbnails based on video URL
-function generateThumbnail(thumbnail, videoUrl) {
+// Function to detect video platform and generate appropriate thumbnail/message
+function getVideoThumbnailInfo(thumbnail, videoUrl) {
     // If thumbnail is already provided, use it
     if (thumbnail && thumbnail.trim() !== "") {
-        return thumbnail;
+        return {
+            src: thumbnail,
+            type: 'custom',
+            message: ''
+        };
     }
     
-    // Try to generate from YouTube URL
-    if (videoUrl && videoUrl.trim() !== "" && (videoUrl.includes('youtube.com') || videoUrl.includes('youtu.be'))) {
-        try {
-            const url = new URL(videoUrl);
-            let videoId;
-            
-            if (url.hostname.includes('youtube.com')) {
-                videoId = url.searchParams.get('v');
-            } else if (url.hostname.includes('youtu.be')) {
-                videoId = url.pathname.substring(1);
-            }
-            
-            if (videoId) {
-                return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
-            }
-        } catch (error) {
-            console.error('Error generating YouTube thumbnail:', error);
-        }
+    // Check if videoUrl is empty or just "#"
+    if (!videoUrl || videoUrl.trim() === "" || videoUrl.trim() === "#") {
+        return {
+            src: "/images/no-video.png",
+            type: 'no-video',
+            message: 'Brak filmu wideo'
+        };
     }
     
-    // If we got here, no thumbnail was provided and we couldn't generate one
-    return "/icons/no-video.png"; // Path to the placeholder image
+    // Try to detect YouTube URL (all possible formats)
+    const youtubeRegex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
+    const match = videoUrl.match(youtubeRegex);
+    
+    if (match && match[1]) {
+        const videoId = match[1];
+        return {
+            src: `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
+            type: 'youtube',
+            message: ''
+        };
+    }
+    
+    // If we got here, it's some other platform or invalid URL
+    return {
+        src: "/images/no-video.png",
+        type: 'unsupported',
+        message: '<span style="color: black; font-weight: bold;">Nieobsługiwany format miniatury</span>'
+    };
 }
 
 // Function to load demons from text files
@@ -52,8 +62,8 @@ async function loadDemonsFromFiles() {
                 try {
                     // Try to parse as JSON first
                     const demon = JSON.parse(data);
-                    // Process thumbnail for YouTube auto-generation
-                    demon.thumbnail = generateThumbnail(demon.thumbnail, demon.videoUrl);
+                    // Process thumbnail info
+                    demon.thumbnailInfo = getVideoThumbnailInfo(demon.thumbnail, demon.videoUrl);
                     demons.push(demon);
                 } catch (jsonError) {
                     // If it's not valid JSON, evaluate it as a JavaScript object
@@ -85,8 +95,8 @@ async function loadDemonsFromFiles() {
                         if (thumbnailMatch) tempDemon.thumbnail = thumbnailMatch[1];
                         if (videoUrlMatch) tempDemon.videoUrl = videoUrlMatch[1];
                         
-                        // Process thumbnail for YouTube auto-generation
-                        tempDemon.thumbnail = generateThumbnail(tempDemon.thumbnail, tempDemon.videoUrl);
+                        // Process thumbnail info
+                        tempDemon.thumbnailInfo = getVideoThumbnailInfo(tempDemon.thumbnail, tempDemon.videoUrl);
                         
                         demons.push(tempDemon);
                     } catch (parseError) {
@@ -167,72 +177,37 @@ async function loadPlayersFromFiles() {
     }
 }
 
-// Generate random color theme using HSL to ensure harmonious colors
+// Generate random color theme using predefined gradients
 function generateRandomTheme() {
-    // Generate a random base hue (0-360)
-    const baseHue = Math.floor(Math.random() * 360);
+    // Predefined gradient themes
+    const gradientThemes = [
+        '--gradient-red-orange',
+        '--gradient-yellow-orange', 
+        '--gradient-green-teal',
+        '--gradient-blue-purple',
+        '--gradient-pink-purple'
+    ];
     
-    // Create variations based on the hue for a cohesive theme
-    // Primary color (medium saturation, medium lightness)
-    const primary = hslToHex(baseHue, 70, 55);
+    // Select random gradient theme
+    const selectedGradient = gradientThemes[Math.floor(Math.random() * gradientThemes.length)];
     
-    // Dark variant (same hue, higher saturation, lower lightness)
-    const dark = hslToHex(baseHue, 80, 30);
+    // Apply the selected gradient to all gradient elements
+    document.documentElement.style.setProperty('--current-gradient', `var(${selectedGradient})`);
     
-    // Light variant (same hue, lower saturation, higher lightness)
-    const light = hslToHex(baseHue, 60, 75);
+    // Generate background shapes
+    createBackgroundShapes();
     
-    // Very light variant (same hue, even lower saturation, even higher lightness)
-    const veryLight = hslToHex(baseHue, 30, 90);
-    
-    // Accent color (complementary hue - 180 degrees away, high saturation)
-    const accentHue = (baseHue + 180) % 360;
-    const accent = hslToHex(accentHue, 80, 60);
-    
-    // Apply transparent versions to CSS
-    document.documentElement.style.setProperty('--applied-primary-transparent', `hsla(${baseHue}, 70%, 55%, 0.15)`);
-    document.documentElement.style.setProperty('--applied-accent-transparent', `hsla(${accentHue}, 80%, 60%, 0.15)`);
-    
-    // Generate background shapes only (no sidebar shapes)
-    createBackgroundShapes(baseHue, accentHue);
-    
-    return {
-        primary,
-        dark,
-        light,
-        veryLight,
-        accent,
-        hue: baseHue
-    };
-}
-
-// Convert HSL values to hex color code
-function hslToHex(h, s, l) {
-    l /= 100;
-    const a = s * Math.min(l, 1 - l) / 100;
-    const f = n => {
-        const k = (n + h / 30) % 12;
-        const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
-        return Math.round(255 * color).toString(16).padStart(2, '0');
-    };
-    return `#${f(0)}${f(8)}${f(4)}`;
+    return selectedGradient;
 }
 
 // Apply a color theme
 function applyRandomTheme() {
     // Generate a random theme
-    const theme = generateRandomTheme();
-    
-    // Apply colors to CSS variables
-    document.documentElement.style.setProperty('--applied-primary', theme.primary);
-    document.documentElement.style.setProperty('--applied-dark', theme.dark);
-    document.documentElement.style.setProperty('--applied-light', theme.light);
-    document.documentElement.style.setProperty('--applied-very-light', theme.veryLight);
-    document.documentElement.style.setProperty('--applied-accent', theme.accent);
+    generateRandomTheme();
 }
 
 // Create geometric shapes across the background
-function createBackgroundShapes(baseHue, accentHue) {
+function createBackgroundShapes() {
     // Remove any existing background shapes
     document.querySelectorAll('.bg-shape').forEach(shape => shape.remove());
     
@@ -256,21 +231,13 @@ function createBackgroundShapes(baseHue, accentHue) {
             rotation = Math.floor(Math.random() * 360);
         }
         
-        // Slightly darker color than the background
-        const hue = Math.random() > 0.5 ? baseHue : accentHue;
-        const saturation = Math.floor(Math.random() * 20) + 30; // 30-50%
-        const lightness = Math.floor(Math.random() * 15) + 20; // 20-35%
-        
         // Apply styles
         shape.style.top = `${top}%`;
         shape.style.left = `${left}%`;
         
-        // For triangle, we need to set the border-bottom-color
-        if (selectedShape === 'triangle') {
-            shape.style.borderBottomColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
-        } else {
-            shape.style.backgroundColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
-        }
+        // Use current gradient for all shapes
+        shape.style.background = 'var(--current-gradient)';
+        shape.style.opacity = '0.1';
         
         // Apply extra rotation if needed
         if (rotation > 0 && selectedShape !== 'circle') {
@@ -304,6 +271,39 @@ function createBackgroundShapes(baseHue, accentHue) {
     }
 }
 
+// Funkcja generująca nieskończoną liczbę palet kolorów dla gradientów
+function generateGradient() {
+    // Generowanie losowego kąta gradientu (0-360)
+    const angle = Math.floor(Math.random() * 360);
+    
+    // Generowanie pierwszego koloru w przestrzeni HSL
+    const hue1 = Math.floor(Math.random() * 360);
+    const sat1 = Math.floor(Math.random() * 30) + 60; // 60-90%
+    const light1 = Math.floor(Math.random() * 20) + 40; // 40-60%
+    
+    // Generowanie drugiego koloru - powiązanego z pierwszym dla harmonijności
+    // Możemy użyć komplementarnego, analogicznego lub monochromatycznego koloru
+    let hue2;
+    const colorScheme = Math.floor(Math.random() * 3);
+    
+    if (colorScheme === 0) {
+        // Komplementarny (po przeciwnej stronie koła kolorów)
+        hue2 = (hue1 + 180) % 360;
+    } else if (colorScheme === 1) {
+        // Analogiczny (blisko na kole kolorów)
+        hue2 = (hue1 + 30 + Math.floor(Math.random() * 60)) % 360;
+    } else {
+        // Monochromatyczny (ten sam odcień, inna jasność/nasycenie)
+        hue2 = hue1;
+    }
+    
+    const sat2 = Math.floor(Math.random() * 30) + 60; // 60-90%
+    const light2 = Math.floor(Math.random() * 20) + 40; // 40-60%
+    
+    // Tworzenie gradientu
+    return `linear-gradient(${angle}deg, hsl(${hue1}, ${sat1}%, ${light1}%), hsl(${hue2}, ${sat2}%, ${light2}%))`;
+}
+
 // DOM Elements
 document.addEventListener('DOMContentLoaded', function() {
     // Apply random theme
@@ -318,11 +318,92 @@ document.addEventListener('DOMContentLoaded', function() {
     // Setup tab navigation
     setupTabs();
     
+    // Setup mobile menu
+    setupMobileMenu();
+    
+    // Setup theme toggle
+    setupThemeToggle();
+    
     // Add event listeners for modal close buttons
     document.querySelectorAll('.close-modal').forEach(button => {
         button.addEventListener('click', closeAllModals);
     });
 });
+
+// Theme Toggle Functionality
+function setupThemeToggle() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeTooltip = document.getElementById('theme-tooltip');
+    const body = document.body;
+    let clickCount = 0;
+    let lastClickTime = null;
+    
+    // Show tooltip when page loads
+    setTimeout(() => {
+        themeTooltip.classList.add('show');
+        document.getElementById('tooltip-overlay').classList.add('show');
+    }, 1000);
+    
+    // Check for saved theme preference or default to light mode
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    
+    if (savedTheme === 'dark') {
+        body.classList.add('dark-theme');
+        updateThemeIcon('dark');
+    }
+    
+    themeToggle.addEventListener('click', () => {
+        const isDark = body.classList.contains('dark-theme');
+        
+        // Track click time for secret feature
+        const currentTime = new Date().getTime();
+        
+        // If last click was less than 500ms ago, count as rapid click
+        if (lastClickTime && (currentTime - lastClickTime < 500)) {
+            clickCount++;
+            
+            if (clickCount === 10) {
+                body.classList.add('rainbow-mode');
+                // Play anime disco music via YouTube embed
+                try {
+                    const iframe = document.getElementById('rainbow-music');
+                    // Set YouTube URL with autoplay and start time (50 seconds)
+                    iframe.src = "https://www.youtube.com/embed/6-8E4Nirh9s?autoplay=1&start=50";
+                } catch (error) {
+                    console.error("Audio error:", error);
+                }
+            }
+        } else {
+            // Reset counter if clicking too slowly
+            clickCount = 1;
+        }
+        
+        // Update last click time
+        lastClickTime = currentTime;
+        
+        if (isDark) {
+            body.classList.remove('dark-theme');
+            localStorage.setItem('theme', 'light');
+            updateThemeIcon('light');
+        } else {
+            body.classList.add('dark-theme');
+            localStorage.setItem('theme', 'dark');
+            updateThemeIcon('dark');
+        }
+    });
+    
+    // Don't restore rainbow mode on refresh
+    localStorage.removeItem('rainbow-mode');
+}
+
+function updateThemeIcon(theme) {
+    const icon = document.querySelector('#theme-toggle i');
+    if (theme === 'dark') {
+        icon.className = 'fas fa-sun';
+    } else {
+        icon.className = 'fas fa-moon';
+    }
+}
 
 // Setup tab navigation
 function setupTabs() {
@@ -339,8 +420,55 @@ function setupTabs() {
             button.classList.add('active');
             const tabId = button.id.replace('tab-', 'tab-content-');
             document.getElementById(tabId).classList.add('active');
+            
+            // On mobile, hide the navigation after clicking a tab
+            const tabNavigation = document.getElementById('tab-navigation');
+            if (window.innerWidth <= 480) {
+                tabNavigation.classList.remove('show');
+            }
         });
     });
+}
+
+// Setup mobile menu toggle
+function setupMobileMenu() {
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const tabNavigation = document.getElementById('tab-navigation');
+    
+    if (mobileMenuToggle && tabNavigation) {
+        mobileMenuToggle.addEventListener('click', () => {
+            // If menu is currently showing, close it with animation
+            if (tabNavigation.classList.contains('show')) {
+                // Add closing animation class
+                tabNavigation.classList.add('closing');
+                
+                // Wait for animation to finish before hiding
+                setTimeout(() => {
+                    tabNavigation.classList.remove('show');
+                    tabNavigation.classList.remove('closing');
+                }, 300); // Match animation duration
+            } else {
+                // Open menu with animation
+                tabNavigation.classList.add('show');
+            }
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!event.target.closest('#mobile-menu-toggle') && 
+                !event.target.closest('#tab-navigation') &&
+                tabNavigation.classList.contains('show')) {
+                tabNavigation.classList.remove('show');
+            }
+        });
+        
+        // Close menu on window resize if width becomes > 480px
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 480 && tabNavigation.classList.contains('show')) {
+                tabNavigation.classList.remove('show');
+            }
+        });
+    }
 }
 
 // Display content in the appropriate containers
@@ -425,34 +553,32 @@ function createDemonCard(demon) {
     card.className = 'demon-card';
     card.style.opacity = '0'; // Start invisible for animation
     
-    // Check if this is a "no video" placeholder
-    const isNoVideo = demon.thumbnail === "/icons/no-video.png";
+    const thumbnailInfo = demon.thumbnailInfo || getVideoThumbnailInfo(demon.thumbnail, demon.videoUrl);
+    const isNoVideo = thumbnailInfo.type === 'no-video' || thumbnailInfo.type === 'unsupported';
     
-    if (isNoVideo) {
-        card.innerHTML = `
-            <div class="demon-content">
-                <div class="demon-position">#${demon.position}</div>
-                <div class="demon-info">
-                    <h3 class="demon-name">${demon.name}</h3>
-                    <p class="demon-description">${demon.description}</p>
-                </div>
+    // Generate a gradient for the position badge based on position
+    const gradient = generateGradientForPosition(demon.position);
+    
+    card.innerHTML = `
+        <div class="demon-content">
+            <div style="display: flex; align-items: center;">
+                <div class="demon-position" style="background: ${gradient}">#${demon.position}</div>
+                <h3 class="demon-name">${demon.name}</h3>
             </div>
-            <div class="demon-thumbnail no-video" data-video="${demon.videoUrl}">
-                <i class="fas fa-video-slash" style="font-size: 48px;"></i>
+            <div class="demon-info">
+                <p class="demon-description">${demon.description}</p>
             </div>
-        `;
-    } else {
-        card.innerHTML = `
-            <div class="demon-content">
-                <div class="demon-position">#${demon.position}</div>
-                <div class="demon-info">
-                    <h3 class="demon-name">${demon.name}</h3>
-                    <p class="demon-description">${demon.description}</p>
-                </div>
-            </div>
-            <img src="${demon.thumbnail}" alt="${demon.name}" class="demon-thumbnail" data-video="${demon.videoUrl}">
-        `;
-    }
+        </div>
+        <div class="demon-thumbnail ${isNoVideo ? 'no-video' : ''}" data-video="${demon.videoUrl}">
+            ${isNoVideo ? `
+                <i class="fas fa-video-slash" style="font-size: 48px; color: #444444;"></i>
+                <span class="thumbnail-message">${thumbnailInfo.message}</span>
+            ` : `
+                <img src="${thumbnailInfo.src}" alt="${demon.name}" style="width: 100%; height: 100%; object-fit: contain;" 
+                    onerror="this.parentElement.innerHTML='<i class=\\'fas fa-video-slash\\' style=\\'font-size: 48px; color: #444444;\\'></i><span class=\\'thumbnail-message\\' style=\\'color: #444444; font-weight: bold;\\'>Nieobsługiwany format miniatury</span>'; this.parentElement.className += ' no-video';">
+            `}
+        </div>
+    `;
     
     // Add click event to thumbnail
     const thumbnail = card.querySelector('.demon-thumbnail');
@@ -540,6 +666,17 @@ function closeAllModals() {
     
     // Restore background scrolling
     document.body.style.overflow = '';
+}
+
+// Function to get a random gradient from the infinite palette system
+function getRandomGradient() {
+    return generateGradient();
+}
+
+// Function to generate a gradient based on demon position - uses current theme gradient
+function generateGradientForPosition(position) {
+    // Use the current theme gradient
+    return 'var(--current-gradient, var(--gradient-blue-purple))';
 }
 
 // Function to save data (empty implementation as this is now server-side)

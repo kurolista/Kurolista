@@ -1,7 +1,7 @@
 {
     "id": 7,
     "position": 7,
-    "name": "Clicks of hell",
+    "name": "ZenonMartyniukLiked",
     "description": "Autor: Ziven Weryfikator: PigonSigma",
     "thumbnail": "",
     "videoUrl": "https://youtu.be/WdbdQAAvymA?si=B9-2vR5XqXI-l43V"

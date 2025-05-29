@@ -1,7 +1,7 @@
 {
     "id": 1,
     "position": 1,
-    "name": "PigeonEnjoyer",
+    "name": "PigonEnjoyer",
     "points": 112,
-    "description": "Gołębie..."
+    "description": "Top 1 gołomb"
 }

@@ -1,8 +1,8 @@
 {
     "id": 2,
     "position": 2,
-    "name": "Żylaki na dupie",
+    "name": "Zylaki na dupie",
     "description": "Autor: BartoszGD Weryfikator: BatroszGD",
     "thumbnail": "",
-    "videoUrl": "https://youtu.be/Bz7FkKl2Ei8?si=2E8tdw5X1Sz1L8TM"
+    "videoUrl": "https://youtu.be/Bz7FkKl2Ei8"
 }

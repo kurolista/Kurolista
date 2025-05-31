@@ -2,6 +2,6 @@
     "id": 6,
     "position": 6,
     "name": "WhiT",
-    "points": 10,
+    "points": 20,
     "description": "Nie wiem"
 }

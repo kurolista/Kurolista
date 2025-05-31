@@ -1,7 +1,7 @@
 {
     "id": 12,
     "position": 12,
-    "name": "Abyss of Freaknes",
+    "name": "Abyss of Freakness",
     "description": "Autor: BartoszGD Weryfikator: BatroszGD",
     "thumbnail": "",
     "videoUrl": ""

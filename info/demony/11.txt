@@ -1,7 +1,7 @@
 {
     "id": 11,
     "position": 11,
-    "name": "Kura Madnes",
+    "name": "Kura Madness",
     "description": "Autor: FenoDash Weryfikator: FenoDash",
     "thumbnail": "",
     "videoUrl": ""

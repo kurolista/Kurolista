@@ -1,0 +1,7 @@
+{
+    "id": 7,
+    "position": 7,
+    "name": "Kielson",
+    "points": 10,
+    "description": "Niggafarter"
+}

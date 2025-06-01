@@ -1,7 +1,15 @@
 {
+<<<<<<< Updated upstream
     "id": 5,
     "position": 5,
     "name": "Diamonds",
     "points": 28,
     "description": "Brak Opisu"
+=======
+    "id": 6,
+    "position": 6,
+    "name": "WhiT",
+    "points": 20,
+    "description": "Nie wiem"
+>>>>>>> Stashed changes
 }

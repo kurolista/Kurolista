@@ -1,8 +1,9 @@
 {
-    "id": 16,
+    "id": 102,
     "position": 16,
-    "name": "OceanGate Survical",
+    "name": "OceanGate Survival",
     "description": "Autor: Realkolib2137 Weryfikator: Realkolib2137",
     "thumbnail": "",
-    "videoUrl": ""
+    "videoUrl": "",
+    "difficulty": "medium"
 }

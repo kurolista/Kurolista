@@ -1,8 +1,9 @@
 {
-    "id": 19,
+    "id": 101,
     "position": 19,
     "name": "Kurowa Depresja",
     "description": "Autor: Bob2025 Weryfikator: Bob2025",
     "thumbnail": "",
-    "videoUrl": ""
+    "videoUrl": "",
+    "difficulty": "easy"
 }

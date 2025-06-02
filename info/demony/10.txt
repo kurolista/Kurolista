@@ -1,8 +1,9 @@
 {
-    "id": 10,
+    "id": 227,
     "position": 10,
     "name": "Ricochet",
     "description": "Autor: Bob2025 Weryfikator: Bob2025",
     "thumbnail": "",
-    "videoUrl": ""
+    "videoUrl": "",
+    "difficulty": "insane"
 }

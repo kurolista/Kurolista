@@ -1,8 +1,9 @@
 {
-    "id": 8,
+    "id": 157,
     "position": 8,
     "name": "Super fade me ship",
     "description": "Autor: Bob2025 Weryfikator: Bob2025",
     "thumbnail": "",
-    "videoUrl": ""
+    "videoUrl": "",
+    "difficulty": "extreme"
 }

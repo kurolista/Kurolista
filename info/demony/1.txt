@@ -1,8 +1,9 @@
 {
-    "id": 1,
+    "id": 258,
     "position": 1,
     "name": "The Holokaust",
     "description": "Autor: Witr0 Weryfikator: PigonSigma",
     "thumbnail": "",
-    "videoUrl": "https://youtu.be/TyBi29hfS6g?si=KA2FYlb-qPPGG2X9"
+    "videoUrl": "https://youtu.be/TyBi29hfS6g?si=KA2FYlb-qPPGG2X9",
+    "difficulty": "extreme"
 }

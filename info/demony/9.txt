@@ -1,8 +1,9 @@
 {
-    "id": 9,
+    "id": 252,
     "position": 9,
     "name": "Wave Challange",
     "description": "Autor: Przecinek Weryfikator: Przecinek",
     "thumbnail": "",
-    "videoUrl": ""
+    "videoUrl": "",
+    "difficulty": "insane"
 }

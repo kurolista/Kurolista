@@ -1,8 +1,9 @@
 {
-    "id": 5,
+    "id": 110,
     "position": 5,
-    "name": "KFC Madnes",
+    "name": "KFC Madness",
     "description": "Autor: FenoDash Weryfikator: FenoDash",
     "thumbnail": "",
-    "videoUrl": "https://youtu.be/8ZdN3dBRKJY?si=mc4c6y0jx6t90BN9"
+    "videoUrl": "https://youtu.be/8ZdN3dBRKJY?si=mc4c6y0jx6t90BN9",
+    "difficulty": "extreme"
 }

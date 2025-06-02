@@ -116,6 +116,38 @@ async function loadDemonsFromFiles() {
     }
 }
 
+// Function to calculate player points based on completed demons
+function calculatePlayerPoints(completedDemons) {
+    if (!completedDemons || !Array.isArray(completedDemons) || completedDemons.length === 0) {
+        return 0;
+    }
+    
+    let totalPoints = 0;
+    
+    // Map of difficulty to points
+    const difficultyPoints = {
+        'easy': 1,
+        'medium': 2,
+        'hard': 4,
+        'insane': 6,
+        'extreme': 10
+    };
+    
+    // Check each completed demon and add points based on difficulty
+    completedDemons.forEach(demonId => {
+        // Find the demon in the demons array
+        const demon = demons.find(d => d.id === demonId);
+        if (demon && demon.difficulty) {
+            const difficulty = demon.difficulty.toLowerCase();
+            if (difficultyPoints[difficulty]) {
+                totalPoints += difficultyPoints[difficulty];
+            }
+        }
+    });
+    
+    return totalPoints;
+}
+
 // Function to load players from text files
 async function loadPlayersFromFiles() {
     try {
@@ -131,6 +163,12 @@ async function loadPlayersFromFiles() {
                 try {
                     // Try to parse as JSON first
                     const player = JSON.parse(data);
+                    
+                    // Ensure completedDemons is an array
+                    if (!player.completedDemons) {
+                        player.completedDemons = [];
+                    }
+                    
                     players.push(player);
                 } catch (jsonError) {
                     // If it's not valid JSON, evaluate it as a JavaScript object
@@ -141,8 +179,8 @@ async function loadPlayersFromFiles() {
                         id: position,
                         position: position,
                         name: "Unknown Player",
-                        points: 0,
-                        description: "No description available"
+                        description: "No description available",
+                        completedDemons: []
                     };
                     
                     // Try to extract each property from the text file
@@ -150,14 +188,21 @@ async function loadPlayersFromFiles() {
                         const idMatch = data.match(/id\s*:\s*(\d+)/);
                         const positionMatch = data.match(/position\s*:\s*(\d+)/);
                         const nameMatch = data.match(/name\s*:\s*['"]([^'"]+)['"]/);
-                        const pointsMatch = data.match(/points\s*:\s*(\d+)/);
                         const descriptionMatch = data.match(/description\s*:\s*['"]([^'"]+)['"]/);
+                        
+                        // Extract completedDemons array
+                        const completedDemonsMatch = data.match(/completedDemons\s*:\s*\[([\d\s,]*)\]/);
                         
                         if (idMatch) tempPlayer.id = parseInt(idMatch[1]);
                         if (positionMatch) tempPlayer.position = parseInt(positionMatch[1]);
                         if (nameMatch) tempPlayer.name = nameMatch[1];
-                        if (pointsMatch) tempPlayer.points = parseInt(pointsMatch[1]);
                         if (descriptionMatch) tempPlayer.description = descriptionMatch[1];
+                        
+                        if (completedDemonsMatch && completedDemonsMatch[1]) {
+                            tempPlayer.completedDemons = completedDemonsMatch[1].split(',')
+                                .map(id => parseInt(id.trim()))
+                                .filter(id => !isNaN(id));
+                        }
                         
                         players.push(tempPlayer);
                     } catch (parseError) {
@@ -338,10 +383,13 @@ function setupThemeToggle() {
     let clickCount = 0;
     let lastClickTime = null;
     
-    // Show tooltip when page loads
+    // Show tooltip when page loads - just show briefly and fade out
     setTimeout(() => {
         themeTooltip.classList.add('show');
-        document.getElementById('tooltip-overlay').classList.add('show');
+        // Remove the overlay immediately, don't blur background
+        setTimeout(() => {
+            themeTooltip.classList.remove('show');
+        }, 3000);
     }, 1000);
     
     // Check for saved theme preference or default to light mode
@@ -525,6 +573,11 @@ function displayPlayers() {
     // Clear container
     container.innerHTML = '';
     
+    // Calculate points for each player based on completed demons
+    players.forEach(player => {
+        player.points = calculatePlayerPoints(player.completedDemons);
+    });
+    
     // Sort players by points (descending)
     const sortedPlayers = [...players].sort((a, b) => b.points - a.points);
     
@@ -559,6 +612,10 @@ function createDemonCard(demon) {
     // Generate a gradient for the position badge based on position
     const gradient = generateGradientForPosition(demon.position);
     
+    // Determine difficulty level
+    const difficultyText = demon.difficulty ? `${demon.difficulty.charAt(0).toUpperCase() + demon.difficulty.slice(1)} Demon` : "Demon";
+    const difficultyClass = demon.difficulty ? `difficulty-${demon.difficulty.toLowerCase()}` : "";
+    
     card.innerHTML = `
         <div class="demon-content">
             <div style="display: flex; align-items: center;">
@@ -567,6 +624,7 @@ function createDemonCard(demon) {
             </div>
             <div class="demon-info">
                 <p class="demon-description">${demon.description}</p>
+                <div class="demon-difficulty ${difficultyClass}">${difficultyText}</div>
             </div>
         </div>
         <div class="demon-thumbnail ${isNoVideo ? 'no-video' : ''}" data-video="${demon.videoUrl}">
@@ -629,6 +687,9 @@ function createPlayerCard(player) {
     card.className = 'player-card';
     card.style.opacity = '0'; // Start invisible for animation
     
+    // Get completed demons details
+    const completedDemonsInfo = getCompletedDemonsInfo(player.completedDemons);
+    
     card.innerHTML = `
         <div class="player-content">
             <div class="player-position">#${player.position}</div>
@@ -636,11 +697,37 @@ function createPlayerCard(player) {
                 <h3 class="player-name">${player.name}</h3>
                 <div class="player-points">${player.points} punktów</div>
                 <p class="player-description">${player.description}</p>
+                <div class="player-completed-demons">
+                    <div class="completed-demons-header">Ukończone demony:</div>
+                    <div class="completed-demons-list">
+                        ${completedDemonsInfo.length > 0 ? completedDemonsInfo.join('') : '<span class="no-demons">Brak ukończonych demonów</span>'}
+                    </div>
+                </div>
             </div>
         </div>
     `;
     
     return card;
+}
+
+// Get HTML for completed demons
+function getCompletedDemonsInfo(completedDemonIds) {
+    if (!completedDemonIds || !Array.isArray(completedDemonIds) || completedDemonIds.length === 0) {
+        return [];
+    }
+    
+    return completedDemonIds.map(demonId => {
+        const demon = demons.find(d => d.id === demonId);
+        if (!demon) return '';
+        
+        // Determine difficulty class
+        const difficultyClass = demon.difficulty ? `difficulty-${demon.difficulty.toLowerCase()}` : "";
+        
+        return `<div class="completed-demon ${difficultyClass}">
+            <span class="completed-demon-position">#${demon.position}</span>
+            <span class="completed-demon-name">${demon.name}</span>
+        </div>`;
+    });
 }
 
 // Open a modal

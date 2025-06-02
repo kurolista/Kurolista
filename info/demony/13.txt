@@ -1,8 +1,9 @@
 {
-    "id": 13,
+    "id": 136,
     "position": 13,
     "name": "Lowtaperhate",
     "description": "Autor: FenoDash Weryfikator: FenoDash",
     "thumbnail": "",
-    "videoUrl": ""
+    "videoUrl": "",
+    "difficulty": "hard"
 }

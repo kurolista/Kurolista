@@ -1,7 +1,0 @@
-{
-    "id": 2,
-    "position": 2,
-    "name": "Witr0",
-    "points": 98,
-    "description": "Top 1 Skibidi Toilet"
-}

@@ -1,8 +1,9 @@
 {
-    "id": 14,
+    "id": 181,
     "position": 14,
     "name": "Kref",
-    "description": "Autor: Bob2025 Weryfikator: Bob2025",
+    "description": "Autor: Bob2025 Weryfikator: Bob2025. ! Skopiowany z serwerów GD Easy Tidal Wave !",
     "thumbnail": "",
-    "videoUrl": ""
+    "videoUrl": "",
+    "difficulty": "medium"
 }

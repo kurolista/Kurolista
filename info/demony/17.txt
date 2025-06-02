@@ -1,8 +1,9 @@
 {
-    "id": 17,
+    "id": 104,
     "position": 17,
     "name": "Lightmare",
     "description": "Autor: Bob2025 Weryfikator: Bob2025",
     "thumbnail": "",
-    "videoUrl": ""
+    "videoUrl": "",
+    "difficulty": "medium"
 }

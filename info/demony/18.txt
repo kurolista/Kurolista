@@ -1,8 +1,9 @@
 {
-    "id": 18,
+    "id": 158,
     "position": 18,
     "name": "Super love me ufo",
     "description": "Autor: Bob2025 Weryfikator: Bob2025",
     "thumbnail": "",
-    "videoUrl": ""
+    "videoUrl": "",
+    "difficulty": "easy"
 }

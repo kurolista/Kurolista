@@ -1,7 +1,7 @@
 {
     "id": 1,
     "position": 1,
-    "name": "PigeonEnjoyer",
-    "points": 112,
-    "description": "Gołębie..."
+    "name": "Place Holder",
+    "description": "To nie jest gracz to jest tylko kopia skryptu",
+    "completedDemons": [1]
 }

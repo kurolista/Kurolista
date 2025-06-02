@@ -1,8 +1,9 @@
 {
-    "id": 6,
+    "id": 184,
     "position": 6,
     "name": "Clicks of hell",
     "description": "Autor: Realkolib2137 Weryfikator: Realkolib2137",
     "thumbnail": "",
-    "videoUrl": "https://youtu.be/sNIPi2fHAac?si=IB4JQCyW7ri9GlNf"
+    "videoUrl": "https://youtu.be/sNIPi2fHAac?si=IB4JQCyW7ri9GlNf",
+    "difficulty": "extreme"
 }

@@ -1,7 +1,0 @@
-{
-    "id": 3,
-    "position": 3,
-    "name": "BartoszGD",
-    "points": 58,
-    "description": "KFL"
-}

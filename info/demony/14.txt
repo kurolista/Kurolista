@@ -1,8 +1,9 @@
 {
-    "id": 14,
+    "id": 131,
     "position": 14,
     "name": "Frost",
     "description": "Autor: Realkolib2137 Weryfikator: Realkolib2137",
     "thumbnail": "",
-    "videoUrl": ""
+    "videoUrl": "",
+    "difficulty": "easy"
 }

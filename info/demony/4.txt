@@ -1,8 +1,9 @@
 {
-    "id": 4,
+    "id": 223,
     "position": 4,
     "name": "JaJoGniot",
-    "description": "Autor: BartoszGD Weryfikator: ???",
+    "description": "Autor: BartoszGD Weryfikator: Realkolib2137",
     "thumbnail": "",
-    "videoUrl": "https://youtu.be/vxCtUCiXwdY?si=Y2cZ_tHuAr_YexZq"
+    "videoUrl": "https://youtu.be/vxCtUCiXwdY?si=Y2cZ_tHuAr_YexZq",
+    "difficulty": "extreme"
 }

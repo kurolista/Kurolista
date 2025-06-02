@@ -3,5 +3,5 @@
     "position": 1,
     "name": "Place Holder",
     "description": "To nie jest gracz to jest tylko kopia skryptu",
-    "completedDemons": [1]
+    "completedDemons": [258]
 }

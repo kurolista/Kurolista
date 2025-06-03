@@ -1,7 +1,0 @@
-{
-    "id": 115,
-    "position": 1,
-    "name": "Diament77",
-    "description": "Gram w kostkę",
-    "completedDemons": [157, 174, 110, 136]
-}

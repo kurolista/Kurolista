@@ -1,7 +1,0 @@
-{
-    "id": 89,
-    "position": 1,
-    "name": "WhiT",
-    "description": "Nie Wiem",
-    "completedDemons": [110, 136, 157]
-}

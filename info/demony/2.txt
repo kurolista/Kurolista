@@ -2,8 +2,8 @@
     "id": 296,
     "position": 2,
     "name": "nword wave trails",
-    "description": "Autor: BartoszGD Weryfikator: BatroszGD",
+    "description": "Autor: kKoink Weryfikator: Realkolib2137",
     "thumbnail": "",
-    "videoUrl": "https://youtu.be/Bz7FkKl2Ei8?si=2E8tdw5X1Sz1L8TM",
+    "videoUrl": "https://youtu.be/8qhY01tVNUg",
     "difficulty": "extreme"
-}
+}   

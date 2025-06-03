@@ -1,9 +1,9 @@
 {
-    "id": 223,
-    "position": 4,
-    "name": "JaJoGniot",
-    "description": "Autor: BartoszGD Weryfikator: Realkolib2137",
+    "id": 180,
+    "position": 3,
+    "name": "Chuj Kurwa",
+    "description": "Autor: Realkolib2137 Weryfikator: PigeonSigma",
     "thumbnail": "",
-    "videoUrl": "https://youtu.be/vxCtUCiXwdY?si=Y2cZ_tHuAr_YexZq",
+    "videoUrl": "https://youtu.be/nPIlBp5jSJk?si=iQr9uG_REtQwJFS4",
     "difficulty": "extreme"
 }

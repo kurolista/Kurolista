@@ -1,9 +1,9 @@
 {
-    "id": 110,
-    "position": 5,
-    "name": "KFC Madness",
-    "description": "Autor: FenoDash Weryfikator: FenoDash",
+    "id": 223,
+    "position": 4,
+    "name": "JaJoGniot",
+    "description": "Autor: BartoszGD Weryfikator: Realkolib2137",
     "thumbnail": "",
-    "videoUrl": "https://youtu.be/8ZdN3dBRKJY?si=mc4c6y0jx6t90BN9",
+    "videoUrl": "https://youtu.be/vxCtUCiXwdY?si=Y2cZ_tHuAr_YexZq",
     "difficulty": "extreme"
 }

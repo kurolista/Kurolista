@@ -1,9 +1,9 @@
 {
-    "id": 252,
-    "position": 9,
-    "name": "Wave Challange",
-    "description": "Autor: Przecinek Weryfikator: Przecinek",
+    "id": 157,
+    "position": 8,
+    "name": "Super fade me ship",
+    "description": "Autor: Bob2025 Weryfikator: Bob2025",
     "thumbnail": "",
     "videoUrl": "",
-    "difficulty": "insane"
+    "difficulty": "extreme"
 }

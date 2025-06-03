@@ -1,9 +1,9 @@
 {
-    "id": 157,
-    "position": 8,
-    "name": "Super fade me ship",
-    "description": "Autor: Bob2025 Weryfikator: Bob2025",
+    "id": 269,
+    "position": 7,
+    "name": "ZenonMartyniukLiked",
+    "description": "Autor: Ziven Weryfikator: PigeonSigma",
     "thumbnail": "",
-    "videoUrl": "",
+    "videoUrl": "https://youtu.be/WdbdQAAvymA?si=B9-2vR5XqXI-l43V",
     "difficulty": "extreme"
 }

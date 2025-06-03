@@ -1,0 +1,7 @@
+{
+    "id": 101,
+    "position": 1,
+    "name": "Witr0",
+    "description": "Top 1 skibidi toilet",
+    "completedDemons": [157, 136, 105, 131, 104, 102, 158, 101, 174, 227, 269, 184, 110, 223, 180, 186]
+}

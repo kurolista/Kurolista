@@ -5,5 +5,5 @@
     "description": "Autor: Realkolib2137 Weryfikator: Realkolib2137",
     "thumbnail": "",
     "videoUrl": "",
-    "difficulty": "easy"
+    "difficulty": "medium"
 }

@@ -1,6 +1,6 @@
 {
     "id": 105,
-    "position": 11,
+    "position": 12,
     "name": "Kura Madness",
     "description": "Autor: FenoDash Weryfikator: FenoDash",
     "thumbnail": "",

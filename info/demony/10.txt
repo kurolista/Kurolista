@@ -1,6 +1,6 @@
 {
     "id": 252,
-    "position": 9,
+    "position": 10,
     "name": "Wave Challange",
     "description": "Autor: Przecinek Weryfikator: Przecinek",
     "thumbnail": "",

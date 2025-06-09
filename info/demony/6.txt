@@ -1,6 +1,6 @@
 {
     "id": 110,
-    "position": 5,
+    "position": 6,
     "name": "KFC Madness",
     "description": "Autor: FenoDash Weryfikator: FenoDash",
     "thumbnail": "",

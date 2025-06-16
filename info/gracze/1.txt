@@ -1,7 +1,7 @@
 {
    "id": 75,
    "position": 0,
-   "name": beli9002
+   "name": "beli9002",
    "description": "mobile i laptop decent player",
    "completedDemons": [269, 136, 174, 105]
 }

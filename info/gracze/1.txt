@@ -1,5 +1,5 @@
 {
-   "id":User ID: 110,
+   "id": 110,
    "position": 0,
    "name": "Kielson",
    "description": "beat my d in a shower",
